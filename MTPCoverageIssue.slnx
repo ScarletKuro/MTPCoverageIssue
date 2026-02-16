@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="MTPCoverageIssue.Test/MTPCoverageIssue.Test.csproj" />
+  <Project Path="MTPCoverageIssue/MTPCoverageIssue.csproj" />
+</Solution>
