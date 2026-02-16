@@ -1,5 +1,8 @@
-﻿namespace MTPCoverageIssue.Database;
+﻿using System.Diagnostics.CodeAnalysis;
 
+namespace MTPCoverageIssue.Database;
+
+[ExcludeFromCodeCoverage]
 public class UpdateHistoryEntity
 {
     public int Id { get; set; }
