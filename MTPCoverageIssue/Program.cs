@@ -1,18 +1,27 @@
+using System.Diagnostics.CodeAnalysis;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using MTPCoverageIssue;
 using MTPCoverageIssue.Database;
 using MTPCoverageIssue.Mapping;
 
-var builder = Host.CreateApplicationBuilder(args);
+namespace MTPCoverageIssue;
 
-builder.Services.AddDbContext<InMemoryDbContext>(options =>
-    options.UseInMemoryDatabase("MTPCoverage"));
+[ExcludeFromCodeCoverage]
+public static class Program
+{
+    public static void Main(string[] args)
+    {
+        var builder = Host.CreateApplicationBuilder(args);
 
-builder.Services.AddAutoMapper(typeof(MappingProfile));
-builder.Services.AddScoped<StatisticService>();
+        builder.Services.AddDbContext<InMemoryDbContext>(options =>
+            options.UseInMemoryDatabase("MTPCoverage"));
 
-var app = builder.Build();
+        builder.Services.AddAutoMapper(typeof(MappingProfile));
+        builder.Services.AddScoped<StatisticService>();
 
-app.Run();
+        var app = builder.Build();
+
+        app.Run();
+    }
+}
